@@ -67,7 +67,6 @@ class Company extends React.PureComponent<ICompanyProps, ICompanyStates> impleme
   // 订阅API请求
   startFetch = () => {
     Observable.subscribe((data: any[]) => {
-      console.log(data, 'data');
       // 获取燃气公司
       this.dispatchAction('company/changeCompanyList', data[0]);
 
