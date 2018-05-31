@@ -4,7 +4,7 @@ import qs from 'qs';
 // 声明
 import { IAxios } from '../global';
 // 常量
-import { API_DATA_ERROR } from './consts';
+// import { API_DATA_ERROR } from './consts';
 
 const codeMessage = {
   200: '服务器成功返回请求的数据',
@@ -160,6 +160,11 @@ const request: IAxios['request'] = (url, options) => {
       // });
 
       console.error(`网络请求错误 url: ${url}时,${newError.message}`);
+      return {
+        code: 1,
+        message: '网络请求错误',
+        data: [],
+      };
     });
 };
 
