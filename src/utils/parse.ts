@@ -19,4 +19,4 @@ export const parseNewResponse: INewParse = params => ({
   data: params.data || [],
 });
 
-export const parseRxjsResponse: any = (value: any) => value.map((item: any) => item.data);
+export const parseRxjsResponse: any = (value: any) => value.data;

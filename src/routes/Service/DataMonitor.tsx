@@ -110,7 +110,7 @@ class DataMonitor extends React.PureComponent<IDataMonitorProps, IDataMonitorSta
   };
   // 订阅API请求
   startFetch = () => {
-    Observable.subscribe(data => {
+    Observable.subscribe((data: any[]) => {
       // 获取扩频表 > 扩频表列表
       this.dispatchAction('datamonitor/changeSpreadList', data[0]);
       // 获取集中器列表;

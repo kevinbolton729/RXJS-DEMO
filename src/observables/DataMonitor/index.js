@@ -1,5 +1,7 @@
-import { Observable } from 'rxjs/Observable';
-import '@/observables';
+import { combineLatest } from 'rxjs';
+import { fromPromise } from 'rxjs/observable/fromPromise';
+// 操作符
+import { map } from 'rxjs/operators';
 
 // 解析响应
 import { parseRxjsResponse } from '@/utils/parse';
@@ -9,14 +11,12 @@ import { fetchDataSpread, fetchDataConcentrator, fetchDataNblot, fetchDuty } fro
 
 // 创建Observable
 // 扩频表
-const spreadData$ = Observable.fromPromise(fetchDataSpread());
+const spreadData$ = fromPromise(fetchDataSpread()).pipe(map(parseRxjsResponse));
 // 集中器
-const concentratorData$ = Observable.fromPromise(fetchDataConcentrator());
+const concentratorData$ = fromPromise(fetchDataConcentrator()).pipe(map(parseRxjsResponse));
 // 物联网表
-const nblotData$ = Observable.fromPromise(fetchDataNblot());
+const nblotData$ = fromPromise(fetchDataNblot()).pipe(map(parseRxjsResponse));
 // 责任部门（或责任人）
-const dutyData$ = Observable.fromPromise(fetchDuty());
+const dutyData$ = fromPromise(fetchDuty()).pipe(map(parseRxjsResponse));
 
-export default Observable.zip(spreadData$, concentratorData$, nblotData$, dutyData$).map(
-  parseRxjsResponse
-);
+export default combineLatest(spreadData$, concentratorData$, nblotData$, dutyData$);

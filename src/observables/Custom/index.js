@@ -1,5 +1,7 @@
-import { Observable } from 'rxjs/Observable';
-import '@/observables';
+import { combineLatest } from 'rxjs';
+import { fromPromise } from 'rxjs/observable/fromPromise';
+// 操作符
+import { map } from 'rxjs/operators';
 
 // 解析响应
 import { parseRxjsResponse } from '@/utils/parse';
@@ -17,21 +19,21 @@ import {
 
 // 创建Observable
 // 扩频表
-const spread$ = Observable.fromPromise(fetchSpread());
+const spread$ = fromPromise(fetchSpread()).pipe(map(parseRxjsResponse));
 // 集中器
-const concentrator$ = Observable.fromPromise(fetchConcentrator());
+const concentrator$ = fromPromise(fetchConcentrator()).pipe(map(parseRxjsResponse));
 // 物联网表
-const nblot$ = Observable.fromPromise(fetchNblot());
+const nblot$ = fromPromise(fetchNblot()).pipe(map(parseRxjsResponse));
 // 扩频表:发货记录
-const shipping$ = Observable.fromPromise(fetchShipping());
+const shipping$ = fromPromise(fetchShipping()).pipe(map(parseRxjsResponse));
 // 物联网表:发货记录
-const nblotShipping$ = Observable.fromPromise(fetchNblotShipping());
+const nblotShipping$ = fromPromise(fetchNblotShipping()).pipe(map(parseRxjsResponse));
 // 异常报警: 扩频表
-const unusualSpread$ = Observable.fromPromise(fetchUnusualSpread());
+const unusualSpread$ = fromPromise(fetchUnusualSpread()).pipe(map(parseRxjsResponse));
 // 异常报警: 物联网表
-const unusualNblot$ = Observable.fromPromise(fetchUnusualNblot());
+const unusualNblot$ = fromPromise(fetchUnusualNblot()).pipe(map(parseRxjsResponse));
 
-export default Observable.zip(
+export default combineLatest(
   spread$,
   concentrator$,
   shipping$,
@@ -39,4 +41,4 @@ export default Observable.zip(
   nblotShipping$,
   unusualSpread$,
   unusualNblot$
-).map(parseRxjsResponse);
+);
