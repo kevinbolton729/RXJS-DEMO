@@ -35,9 +35,14 @@ const proxy = {
   // [用户]
   // 登录
   'POST /api/admin/loginon': getBody({ data: [{ role: 1000 }] }),
+  // 安全退出
   'POST /api/admin/loginout': getBody({ message: '已安全退出' }),
   // 获取登录用户资料
   'GET /api/admin/currentUser': getBody({ data: userData }),
+  // 修改登录密码
+  'POST /api/admin/updatepwd': getBody({ message: '您的登录密码已修改' }),
+  // 修改用户资料
+  'POST /api/admin/updateuser': getBody({ message: '修改成功' }),
   // [客户服务监控]
   // 获取扩频表 > 扩频表列表
   'GET /api/custom/fetchspread': getBody({ data: spreadData }),

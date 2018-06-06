@@ -20,9 +20,9 @@ export const API_DOMAIN = '';
 export const LOGO_USER = '/images/logo.png';
 export const LOGO_PAGE = '/images/mainLogo.png';
 // Login/GlobalFooter 提示信息
-export const DEV_COMPANY = '四川海力智能科技股份有限公司';
-export const SYS_NAME = 'MONITOR';
-export const SYS_INFO = '监控系统 MONITOR ADMIN Vol 1.0';
+export const DEV_COMPANY = 'QQ 7526666 / 3832565';
+export const SYS_NAME = 'DEMO';
+export const SYS_INFO = 'DEMO RXJS ADMIN Vol 1.0';
 export const BROWSER_INFO = '推荐使用360极速/Chrome/火狐等现代浏览器';
 export const SERVICE_INFO = `2018 ${DEV_COMPANY} 提供技术支持`;
 // 工作台
