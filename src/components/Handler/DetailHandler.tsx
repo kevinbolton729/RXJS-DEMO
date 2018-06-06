@@ -2,7 +2,7 @@
  * @Author: Kevin Bolton
  * @Date: 2018-01-03 23:18:25
  * @Last Modified by: Kevin Bolton
- * @Last Modified time: 2018-06-06 21:57:36
+ * @Last Modified time: 2018-06-06 22:24:13
  */
 
 import { Button, Cascader, DatePicker, Form, Input, message } from 'antd';
@@ -96,7 +96,6 @@ class DetailHandler extends React.PureComponent<IDetailProps, IDetailStates> {
       console.error('没有导出的数据');
       return;
     }
-
     const sheetHeader = this.getSheetHeader(dataMonitorCols().spread);
     const sheetData = this.getSheetData(data);
     const datas = [

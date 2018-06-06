@@ -106,10 +106,12 @@ const fields = {
   dllVersion: 'DLL 1.0.5', // DLL文件版本
   getDataAt: `${typeUnix13}`, // 采集数据时间
   // 登录用户信息（资料）
-  userid: '登录用户编码', // 登录用户编码
+  userid: '595f87fe682e091380f2ad90', // 登录用户编码
   nickname: '鱼子酱', // 用户昵称(界面显示)
-  portrait: '头像地址', // 头像地址
+  portrait: '/uploads/images/portrait/1528258710064.jpeg', // 头像地址
   role: 1000, // 用户权限 eg. 1000:'admin' 2000:'monitor' 3000:'custom'
   sex: 1, // 用户权限 ${typeNumber} eg. 0:女 1:男
+  createDate: 1502122350526,
+  updateDate: 1528258710065,
 };
 export default fields;

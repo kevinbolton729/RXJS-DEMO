@@ -32,6 +32,12 @@ const getBody = (opts, code = 0) => ({
 // }),
 
 const proxy = {
+  // [用户]
+  // 登录
+  'POST /api/admin/loginon': getBody({ data: [{ role: 1000 }] }),
+  'POST /api/admin/loginout': getBody({ message: '已安全退出' }),
+  // 获取登录用户资料
+  'GET /api/admin/currentUser': getBody({ data: userData }),
   // [客户服务监控]
   // 获取扩频表 > 扩频表列表
   'GET /api/custom/fetchspread': getBody({ data: spreadData }),
