@@ -10,13 +10,13 @@ export const PAGELOGIN = '/user/login';
 export const SECRETKEY_USER = 'SECRETKEY-BOLTON';
 // 接口
 // 开发环境
-export const URL_PREFIX = 'http://192.168.5.104:7002/public';
-export const API_DOMAIN = 'http://192.168.5.104:7002';
-// export const URL_PREFIX = 'http://127.0.0.1:7002/public';
-// export const API_DOMAIN = 'http://127.0.0.1:7002';
+// export const URL_PREFIX = 'http://192.168.5.104:7002/public';
+// export const API_DOMAIN = 'http://192.168.5.104:7002';
+export const URL_PREFIX = 'http://127.0.0.1:7002/public';
+export const API_DOMAIN = 'http://127.0.0.1:7002';
 // 生产环境
-// export const URL_PREFIX = 'http://0.0.0.0:7002/public';
-// export const API_DOMAIN = 'http://0.0.0.0:7002';
+// export const URL_PREFIX = 'http://0.0.0.0:7001/public';
+// export const API_DOMAIN = 'http://0.0.0.0:7001';
 export const LOGO_USER = '/images/logo.png';
 export const LOGO_PAGE = '/images/mainLogo.png';
 // Login/GlobalFooter 提示信息

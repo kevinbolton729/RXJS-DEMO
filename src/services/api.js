@@ -25,7 +25,7 @@ export async function accountLoginOut(params = {}) {
 }
 // -- 注册
 export async function fakeRegister(params = {}) {
-  return request(`${API_DOMAIN}/api/server/register`, {
+  return request(`${API_DOMAIN}/api/admin/register`, {
     method: 'POST',
     body: params,
   });

@@ -45,7 +45,7 @@ export default {
       const { code, message } = yield call(parseNewResponse, response);
       try {
         // get location pathname
-        const urlParams = new URL(window.location.href);
+        const urlParams = new URL(window.location.href); // eslint-disable-line
         const pathname = yield select(state => state.routing.location.pathname);
         // add the parameters in the url
         urlParams.searchParams.set('redirect', pathname);

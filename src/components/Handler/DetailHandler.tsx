@@ -2,16 +2,17 @@
  * @Author: Kevin Bolton
  * @Date: 2018-01-03 23:18:25
  * @Last Modified by: Kevin Bolton
- * @Last Modified time: 2018-05-25 13:18:20
+ * @Last Modified time: 2018-06-06 21:55:32
  */
 
 import { Button, Cascader, DatePicker, Form, Input, message } from 'antd';
+import ExportJsonExcel from 'js-export-excel';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 // 常量
 import { MESSAGE_NOINPUT } from '../../utils/consts';
 // 方法
-import { getCityOptions, getSheetHeader, startExport } from '../../utils/fns';
+import { getCityOptions } from '../../utils/fns';
 // 声明
 import { IDetailProps, IDetailStates } from './';
 // 样式
@@ -96,18 +97,27 @@ class DetailHandler extends React.PureComponent<IDetailProps, IDetailStates> {
       return;
     }
 
-    const sheetHeader = getSheetHeader(dataMonitorCols().spread);
+    const sheetHeader = this.getSheetHeader(dataMonitorCols().spread);
     const sheetData = this.getSheetData(data);
-    const options = [
+    const datas = [
       {
         sheetName: 'sheet',
         sheetHeader,
         sheetData,
       },
     ];
+    const options = { fileName: '导出至EXCEL', datas };
 
     // 导出
-    startExport(options);
+    const toExcel = new ExportJsonExcel(options);
+    toExcel.saveExcel();
+  };
+  // 获取sheetHeader
+  getSheetHeader = (sheetHeader: any[]) => {
+    const expend = ['价格', '价格类型'];
+    const handlerArr = sheetHeader.reduce((arr, current) => arr.concat(current.title), []);
+    const result = [...handlerArr.slice(0, handlerArr.length - 1), ...expend];
+    return result;
   };
   // 获取sheetData
   getSheetData = (sheetData: any[]) =>
