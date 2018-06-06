@@ -30,6 +30,7 @@
     "dva-loading": "^1.0.4",
     "enquire-js": "^0.1.1",
     "fastclick": "^1.0.6",
+    "js-export-excel": "^1.0.5",
     "js-md5": "^0.7.3",
     "lodash": "^4.17.4",
     "lodash-decorators": "^4.4.1",

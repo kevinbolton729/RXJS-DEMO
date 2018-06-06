@@ -6,6 +6,7 @@
  */
 import { message as openMessage } from 'antd';
 import { routerRedux } from 'dva/router';
+import ExportJsonExcel from 'js-export-excel';
 import md5 from 'js-md5';
 import moment from 'moment';
 // 声明
@@ -262,6 +263,22 @@ export const dispatchAction = (props: any, opts: { type: string; payload?: any }
   opts.payload
     ? dispatch({ type: opts.type, payload: opts.payload })
     : dispatch({ type: opts.type });
+};
+// 导出至EXCEL
+// 执行导出
+export const startExport = (datas: any[] = [], fileName: string = '导出至EXCEL'): void => {
+  // console.log(fileName);
+  const options = { fileName, datas };
+
+  const toExcel = new ExportJsonExcel(options);
+  toExcel.saveExcel();
+};
+// 获取sheetHeader
+export const getSheetHeader = (sheetHeader: any[]) => {
+  const expend = ['价格', '价格类型'];
+  const handlerArr = sheetHeader.reduce((arr, current) => arr.concat(current.title), []);
+  const result = [...handlerArr.slice(0, handlerArr.length - 1), ...expend];
+  return result;
 };
 
 // [models]

@@ -47,7 +47,7 @@ export const customCols = (fn: any) => {
       key: 'action',
       width: 180,
       render: (text: any, record: any) => {
-        return showAction({ fn, record, key: 'spread' });
+        return fn ? showAction({ fn, record, key: 'spread' }) : null;
       },
     },
   ];
@@ -84,7 +84,7 @@ export const customCols = (fn: any) => {
       key: 'action',
       width: 180,
       render: (text: any, record: any) => {
-        return <div>{showAction({ fn, record, key: 'nblot' })}</div>;
+        return fn ? <div>{showAction({ fn, record, key: 'nblot' })}</div> : null;
       },
     },
   ];
@@ -130,7 +130,7 @@ export const customCols = (fn: any) => {
       key: 'action',
       width: 180,
       render: (text: any, record: any) => {
-        return showAction({ fn, record, key: 'unusual' });
+        return fn ? showAction({ fn, record, key: 'unusual' }) : null;
       },
     },
   ];
@@ -161,7 +161,7 @@ export const customCols = (fn: any) => {
       key: 'action',
       width: 180,
       render: (text: any, record: any) => {
-        return showAction({ fn, record, key: 'concentrator' });
+        return fn ? showAction({ fn, record, key: 'concentrator' }) : null;
       },
     },
   ];
@@ -194,7 +194,7 @@ export const customCols = (fn: any) => {
       key: 'action',
       width: 180,
       render: (text: any, record: any) => {
-        return showAction({ fn, record, key: 'shipping' });
+        return fn ? showAction({ fn, record, key: 'shipping' }) : null;
       },
     },
   ];
@@ -204,7 +204,7 @@ export const customCols = (fn: any) => {
 
 // 业务数据监控的
 // Columns of Table
-export const dataMonitorCols = (fn: any) => {
+export const dataMonitorCols = (fn?: any) => {
   // 扩频表
   const spread = [
     {
@@ -238,7 +238,7 @@ export const dataMonitorCols = (fn: any) => {
       key: 'action',
       width: 180,
       render: (text: any, record: any) => {
-        return showAction({ fn, record, key: 'spread' });
+        return fn ? showAction({ fn, record, key: 'spread' }) : null;
       },
     },
   ];
@@ -275,7 +275,7 @@ export const dataMonitorCols = (fn: any) => {
       key: 'action',
       width: 180,
       render: (text: any, record: any) => {
-        return showAction({ fn, record, key: 'nblot' });
+        return fn ? showAction({ fn, record, key: 'nblot' }) : null;
       },
     },
   ];
@@ -306,7 +306,7 @@ export const dataMonitorCols = (fn: any) => {
       key: 'action',
       width: 180,
       render: (text: any, record: any) => {
-        return showAction({ fn, record, key: 'concentrator' });
+        return fn ? showAction({ fn, record, key: 'concentrator' }) : null;
       },
     },
   ];

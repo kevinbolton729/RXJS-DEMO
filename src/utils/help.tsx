@@ -42,18 +42,26 @@ export const defaultStats = {
   0: { label: '异常', color: 'red' },
   1: { label: '正常', color: 'green' },
 };
-export const formatDefaultStatus = (status: number | string) => {
+export const formatDefaultStatus = (status: number | string, type?: string) => {
   const stats = parseInt(`${status}`, 10);
-  return <Tag color={defaultStats[stats].color}>{defaultStats[stats].label}</Tag>;
+  return type === 'excel' ? (
+    defaultStats[stats].label
+  ) : (
+    <Tag color={defaultStats[stats].color}>{defaultStats[stats].label}</Tag>
+  );
 };
 // 格式化扫频方式
 const scanStats = {
   0: { label: '手动', color: 'cyan' },
   1: { label: '自动', color: 'gold' },
 };
-export const formatScanMethod = (status: number | string) => {
+export const formatScanMethod = (status: number | string, type?: string) => {
   const stats = parseInt(`${status}`, 10);
-  return <Tag color={scanStats[stats].color}>{scanStats[stats].label}</Tag>;
+  return type === 'excel' ? (
+    scanStats[stats].label
+  ) : (
+    <Tag color={scanStats[stats].color}>{scanStats[stats].label}</Tag>
+  );
 };
 // 格式化在线状态
 const onLineStats = {
@@ -82,9 +90,13 @@ const priceTypeStats = {
   0: { label: '后付费', color: 'cyan' },
   1: { label: '预付费', color: 'gold' },
 };
-export const formatPriceType = (status: number | string) => {
+export const formatPriceType = (status: number | string, type?: string) => {
   const stats = parseInt(`${status}`, 10);
-  return <Tag color={priceTypeStats[stats].color}>{priceTypeStats[stats].label}</Tag>;
+  return type === 'excel' ? (
+    priceTypeStats[stats].label
+  ) : (
+    <Tag color={priceTypeStats[stats].color}>{priceTypeStats[stats].label}</Tag>
+  );
 };
 // 格式化电池状态
 const batteryStats = {

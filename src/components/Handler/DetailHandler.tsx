@@ -11,11 +11,15 @@ import * as React from 'react';
 // 常量
 import { MESSAGE_NOINPUT } from '../../utils/consts';
 // 方法
-import { getCityOptions } from '../../utils/fns';
+import { getCityOptions, getSheetHeader, startExport } from '../../utils/fns';
 // 声明
 import { IDetailProps, IDetailStates } from './';
 // 样式
 const styles = require('./DetailHandler.less');
+// 引入 dataMonitorCols
+import { dataMonitorCols } from '../../routes/Service/columns';
+// Help
+import { formatDefaultStatus, formatPriceType, formatScanMethod } from '../../utils/help';
 
 const { RangePicker }: any = DatePicker;
 const { Search } = Input;
@@ -83,6 +87,42 @@ class DetailHandler extends React.PureComponent<IDetailProps, IDetailStates> {
     if (this.props.resetData) this.props.resetData();
     this.resetFields();
   };
+  // click 导出 Buttom
+  clickExport = () => {
+    // console.log('导出至EXCEL');
+    const data = this.props.data || [];
+    if (data.length === 0) {
+      console.error('没有导出的数据');
+      return;
+    }
+
+    const sheetHeader = getSheetHeader(dataMonitorCols().spread);
+    const sheetData = this.getSheetData(data);
+    const options = [
+      {
+        sheetName: 'sheet',
+        sheetHeader,
+        sheetData,
+      },
+    ];
+
+    // 导出
+    startExport(options);
+  };
+  // 获取sheetData
+  getSheetData = (sheetData: any[]) =>
+    sheetData.reduce((arr, current) => {
+      arr.push({
+        spreadCode: current.spreadCode,
+        company: current.company,
+        scanMethod: formatScanMethod(current.scanMethod, 'excel'),
+        sendStatus: formatDefaultStatus(current.sendStatus, 'excel'),
+        price: current.price,
+        priceType: formatPriceType(current.priceType, 'excel'),
+      });
+      return arr;
+    }, []);
+
   // 选择城市
   changeCity = (value: string[]) => {
     if (this.props.changeCity) this.props.changeCity(value);
@@ -135,6 +175,9 @@ class DetailHandler extends React.PureComponent<IDetailProps, IDetailStates> {
               )}
             </div>
           )}
+          <div className={styles.item}>
+            <Button onClick={this.clickExport}>导出至EXCEL</Button>
+          </div>
         </Form>
       </div>
     );

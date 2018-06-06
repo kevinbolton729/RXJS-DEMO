@@ -278,7 +278,7 @@ class DataMonitor extends React.PureComponent<IDataMonitorProps, IDataMonitorSta
               <TabPane tab={sortGroup.nblot} key="nblot" />
             </Tabs>
           </div>
-          <DetailHandler sort={currentTab} />
+          <DetailHandler data={this.props.spreadList} sort={currentTab} />
           <div style={{ marginTop: '20px' }}>
             {currentTable === 'spread' || currentTable === 'nblot' ? (
               <Table
