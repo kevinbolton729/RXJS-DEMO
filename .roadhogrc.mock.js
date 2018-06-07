@@ -17,6 +17,7 @@ import {
 const noProxy = process.env.NO_PROXY === 'true';
 
 // 获取接口返回的函数
+// code 0:正常 1:错误
 const getBody = (opts, code = 0) => ({
   code,
   message: opts.message || messageSuccess,
@@ -34,7 +35,22 @@ const getBody = (opts, code = 0) => ({
 const proxy = {
   // [用户]
   // 登录
-  'POST /api/admin/loginon': getBody({ data: [{ role: 1000 }] }),
+  // 'POST /api/admin/loginon': getBody({ data: [{ role: 1000 }] }),
+  'POST /api/admin/loginon': (req, res) => {
+    const { username, password } = req.body;
+
+    if (username !== 'dev_admin') {
+      res.send(getBody({ message: '用户名不存在' }, 1));
+      return;
+    }
+    if (password !== '45af75a8aa4bbbe57c814d9c93397d50') {
+      res.send(getBody({ message: '输入的登录密码错误' }, 1));
+      return;
+    }
+    if (username === 'dev_admin' && password === '45af75a8aa4bbbe57c814d9c93397d50') {
+      res.send(getBody({ data: [{ role: 1000 }] }));
+    }
+  },
   // 安全退出
   'POST /api/admin/loginout': getBody({ message: '已安全退出' }),
   // 获取登录用户资料

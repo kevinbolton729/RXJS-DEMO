@@ -113,7 +113,9 @@ export default class GlobalHeader extends PureComponent {
           style={
             isMobile
               ? null
-              : collapsed ? { paddingRight: COLLAPSEDWIDTH } : { paddingRight: NOCOLLAPSEDWIDTH }
+              : collapsed
+                ? { paddingRight: COLLAPSEDWIDTH }
+                : { paddingRight: NOCOLLAPSEDWIDTH }
           }
         >
           {/* <HeaderSearch
@@ -168,7 +170,9 @@ export default class GlobalHeader extends PureComponent {
                 <span className={styles.name}>{currentUser.nickname}</span>
               </span>
             </Dropdown>
-          ) : <Spin size="small" style={{ marginLeft: 8 }} />}
+          ) : (
+            <Spin size="small" style={{ marginLeft: 8 }} />
+          )}
         </div>
       </Header>
     );

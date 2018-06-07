@@ -142,7 +142,7 @@ const request: IAxios['request'] = (url, options) => {
         //   message: '网络请求错误',
         //   description: `请求: ${url}时,${API_DATA_ERROR}`,
         // });
-        console.error(`网络请求错误 url: ${url}`);
+        console.warn(`[错误]返回码code为1 url: ${url}`);
       }
       return response.data;
     })
@@ -159,7 +159,7 @@ const request: IAxios['request'] = (url, options) => {
       //   description: newError.message,
       // });
 
-      console.error(`网络请求错误 url: ${url}时,${newError.message}`);
+      console.error(`[错误]网络请求 url: ${url}时,报错: ${newError.message}`);
       return {
         code: 1,
         message: '网络请求错误',

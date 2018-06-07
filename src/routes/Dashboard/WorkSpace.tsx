@@ -5,7 +5,7 @@ import * as React from 'react';
 // 组件
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 // 常量
-import { ROLE_NAME, URL_PREFIX } from '../../utils/consts';
+import { DATA_NODATA, ROLE_NAME, URL_PREFIX } from '../../utils/consts';
 // 声明
 import { IWorkItems, IWorkProps, IWorkStates } from './';
 // 样式
@@ -37,6 +37,7 @@ class WorkSpace extends React.PureComponent<IWorkProps, IWorkStates> implements 
 
   render() {
     const { currentUser } = this.props;
+
     const pageHeaderContent = (
       <div className={styles.pageHeaderContent}>
         <div className={styles.avatar}>
@@ -47,7 +48,7 @@ class WorkSpace extends React.PureComponent<IWorkProps, IWorkStates> implements 
         </div>
         <div className={styles.content}>
           <div className={styles.contentTitle}>
-            {`${this.getShowDate()}！${currentUser.nickname}，祝您开心每一天！`}
+            {`${this.getShowDate()}！${currentUser.nickname || DATA_NODATA}，祝您开心每一天！`}
           </div>
           <div>{ROLE_NAME}</div>
         </div>

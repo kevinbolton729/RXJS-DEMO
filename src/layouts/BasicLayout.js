@@ -43,7 +43,7 @@ import {
 // 方法
 // import {} from '@/utils/fns';
 
-const logo = `http://39.108.178.198:3002${LOGO_PAGE}`;
+const logo = `${LOGO_PAGE}`;
 
 const { Content } = Layout;
 const { AuthorizedRoute } = Authorized;
