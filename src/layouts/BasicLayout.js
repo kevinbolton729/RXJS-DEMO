@@ -17,7 +17,6 @@ import { getMenuData } from '@/common/menu';
 // import logo from '@/assets/logo.svg';
 // 组件
 import { openModal, openConfirm } from '@/components/Modal';
-// import { FirstPage } from '@/components/Other/FirstPage';
 
 // 样式
 // import styles from '@/layouts/BasicLayout.less';
@@ -147,8 +146,6 @@ class BasicLayout extends React.PureComponent {
         });
       }
     });
-
-    // document.onreadystatechange = this.listen;
   }
   componentWillUnmount() {
     isMounted.status = false;
@@ -229,6 +226,11 @@ class BasicLayout extends React.PureComponent {
                 type: 'user/editPassword',
                 payload,
               });
+
+              // 关闭Modal
+              setTimeout(() => {
+                this.closeModal();
+              }, 500);
             } else {
               message.error(validater);
             }
@@ -280,7 +282,6 @@ class BasicLayout extends React.PureComponent {
   };
   handleReset = () => {
     console.log('重置');
-    // this.props.form.setFieldsValue({ oldpwd: '', newpwd: '', confirmpwd: '' });
     this.props.form.resetFields();
   };
   // show Modal
@@ -338,7 +339,6 @@ class BasicLayout extends React.PureComponent {
     const { getFieldDecorator } = form;
     const bashRedirect = this.getBashRedirect();
     const marginLeft = collapsed ? COLLAPSEDWIDTH : NOCOLLAPSEDWIDTH;
-    // const firstLayout = <FirstPage />;
     const mainLayout = (
       <Layout>
         <SiderMenu
@@ -452,20 +452,6 @@ class BasicLayout extends React.PureComponent {
     const userCenterChildren = (
       <div style={{ padding: '0 16' }}>
         <Form onSubmit={this.submitUser}>
-          {/* <Row>
-            <Col span={6}>
-              <FormItem label="头像">
-                <div className={styles.portrait}>
-                  <Avatar size="large" src={`${URL_PREFIX}${currentUser.portrait}`} />
-                </div>
-              </FormItem>
-            </Col>
-          </Row>
-          <div style={{ marginTop: '-24px' }}>
-            <Divider>
-              <span className="dividerFont">修改个人信息</span>
-            </Divider>
-          </div> */}
           <Row>
             <Col span={12}>
               <FormItem label="昵称">
@@ -571,6 +557,5 @@ class BasicLayout extends React.PureComponent {
     );
   }
 }
-document.onreadystatechange = BasicLayout.listen;
 
 export default BasicLayout;
