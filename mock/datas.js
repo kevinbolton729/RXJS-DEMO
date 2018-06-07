@@ -265,8 +265,6 @@ export const businessCompanyData = [
 ];
 
 // 登录用户信息（资料）
-//
-
 export const userData = [
   {
     userid: fields.userid,
