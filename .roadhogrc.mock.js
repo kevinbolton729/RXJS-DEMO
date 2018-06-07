@@ -79,4 +79,4 @@ const proxy = {
   'POST /api/company/fetchconfig': getBody({ message: saveSuccess }),
 };
 
-export default (noProxy ? {} : delay(proxy, 1500));
+export default (noProxy ? {} : delay(proxy, 1000));
