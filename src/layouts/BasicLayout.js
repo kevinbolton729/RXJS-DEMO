@@ -89,11 +89,12 @@ const query = {
   },
 };
 
-let isMobile;
-enquireScreen((b) => {
-  isMobile = b;
-});
+const isMobile = { status: false };
 const isMounted = { status: true };
+
+enquireScreen((status) => {
+  isMobile.status = status;
+});
 
 @connect(({ user, global, loading }) => ({
   currentUser: user.currentUser,
@@ -113,7 +114,7 @@ class BasicLayout extends React.PureComponent {
     super(props);
 
     this.state = {
-      isMobile,
+      isMobile: isMobile.status,
       visible: false,
       // Modal Form
       // 0: 安全中心 2:个人中心
