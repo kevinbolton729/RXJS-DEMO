@@ -8,8 +8,10 @@ export interface IDetailProps {
   filterData?: any;
   resetData?: any;
   changeCity?: any;
+  clickMe?: any;
   hideDatePicker?: boolean;
   showSelectCity?: boolean;
+  loading?: boolean;
 }
 
 export interface IDetailStates {

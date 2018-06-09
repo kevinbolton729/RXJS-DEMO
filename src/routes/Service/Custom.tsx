@@ -165,6 +165,11 @@ class Custom extends React.PureComponent<ICustomProps, ICustomStates> implements
   closeModal = () => {
     this.setState({ visible: false });
   };
+  // Click Me
+  clickMe = (value: any) => {
+    // event.preventDefault();
+    console.log(value, 'click me custom');
+  };
 
   render() {
     const {
@@ -244,7 +249,12 @@ class Custom extends React.PureComponent<ICustomProps, ICustomStates> implements
               </TabPane>
             </Tabs>
           </div>
-          <DetailHandler sort={currentTab} />
+          <DetailHandler
+            loading={loading}
+            clickMe={this.clickMe}
+            hideDatePicker={true}
+            sort={currentTab}
+          />
           {/* <Divider /> */}
           <div style={{ marginTop: '20px' }}>
             {currentTable === 'spread' || currentTable === 'nblot' ? (

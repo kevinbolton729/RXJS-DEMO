@@ -2,13 +2,15 @@
  * @Author: Kevin Bolton
  * @Date: 2018-01-03 23:18:25
  * @Last Modified by: Kevin Bolton
- * @Last Modified time: 2018-06-06 22:24:13
+ * @Last Modified time: 2018-06-09 12:19:30
  */
 
 import { Button, Cascader, DatePicker, Form, Input, message } from 'antd';
 import ExportJsonExcel from 'js-export-excel';
 import PropTypes from 'prop-types';
 import * as React from 'react';
+// Observable
+import { click$ } from '../../observables/Custom';
 // 常量
 import { MESSAGE_NOINPUT } from '../../utils/consts';
 // 方法
@@ -137,6 +139,14 @@ class DetailHandler extends React.PureComponent<IDetailProps, IDetailStates> {
     if (this.props.changeCity) this.props.changeCity(value);
   };
 
+  // Click me
+  clickMe = (event: any) => {
+    const sub = click$(event.target).subscribe((value: any) => {
+      this.props.clickMe(value);
+      sub.unsubscribe();
+    });
+  };
+
   render() {
     const { dately } = this.dateFormat;
     const { form, sort, hideDatePicker, showSelectCity } = this.props;
@@ -186,6 +196,11 @@ class DetailHandler extends React.PureComponent<IDetailProps, IDetailStates> {
           )}
           <div className={styles.item}>
             <Button onClick={this.clickExport}>导出至EXCEL</Button>
+          </div>
+          <div className={styles.item}>
+            <Button loading={this.props.loading} id="clickMe" type="primary" onClick={this.clickMe}>
+              点击Me
+            </Button>
           </div>
         </Form>
       </div>
